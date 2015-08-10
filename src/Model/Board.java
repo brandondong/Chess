@@ -349,4 +349,6 @@ public class Board {
     public Piece getCurrentPiece() { return currentPiece; }
 
     public Set<Piece> getPieces() { return pieces; }
+
+    public boolean getColor() { return isWhiteTurn; }
 }
