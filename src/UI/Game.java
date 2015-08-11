@@ -49,13 +49,23 @@ public class Game extends JFrame {
     // Effects: renders the current move set
     private void renderMoves(Graphics g) {
         Set<Point> moves = board.getPossibleMoves();
+        Color c;
+
         if (board.getColor()) {
-            g.setColor(new Color(177, 173, 182));
+            c = new Color(177, 173, 182);
         } else {
-            g.setColor(new Color(130, 103, 43));
+            c = new Color(130, 103, 43);
         }
+        g.setColor(c);
+
         for (Point p : moves) {
-            g.fillRect(p.x * SPACING, p.y * SPACING, SPACING, SPACING);
+            if (board.getPieceAt(p) == null) {
+                g.fillRect(p.x * SPACING, p.y * SPACING, SPACING, SPACING);
+            } else {
+                g.setColor(new Color(198, 41, 34));
+                g.fillRect(p.x * SPACING, p.y * SPACING, SPACING, SPACING);
+                g.setColor(c);
+            }
         }
     }
 
